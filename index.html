@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Shopping List</title>
+
+    <style>
+      .done {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Shopping List</h1>
+
+    <input type="text" placeholder="Add Item">
+    <button >Add</button>
+
+    <ul></ul>
+
+
+    <script type="text/javascript">
+
+      var btn = document.querySelector("button");
+      var txtb = document.querySelector("input");
+      var ul = document.querySelector("ul");
+
+      btn.addEventListener("click", function() {
+        if (txtb.value.length>0) {
+          var li = document.createElement("li");
+          li.setAttribute("class", "items");
+          li.setAttribute("onclick", "toggle(this)")
+          li.innerHTML = txtb.value + " " + "<button onclick='removeMe(this)' class='remove'>X</button>";
+
+          ul.appendChild(li);
+
+          txtb.value = "";
+        }
+
+      });
+
+      btn.addEventListener("keydown", function(e) {
+        alert(e.keyCode);
+      });
+
+      function removeMe(e) {
+        e.parentNode.remove();
+      }
+
+      function toggle(e) {
+        e.classList.toggle("done");  
+      }
+
+
+    </script>
+  </body>
+</html>
